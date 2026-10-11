@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "slug": "hogwarts-mp",
+  "channel": "testing",
+  "revision": "0da074487db27cf27d36529041d9e13b4fe626f41e760599575e84e2b87ec334",
+  "version": "1.8.2",
+  "files": [
+    {
+      "path": "reference.config.json",
+      "size": 622,
+      "sha256": "ac69e373ae7065720e34d00c43ba64a3c4149d373de401a84ef5063cc6e2e531",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "path": "targets/client/api.d.ts",
+      "size": 222110,
+      "sha256": "70b486fe5a6995863d90d3702decd231164012194afb9aa24fa8d50e5bdf7bc2",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "path": "targets/client/metadata.json",
+      "size": 390640,
+      "sha256": "9e76e6f3477cf49055b86a224a14fcb36823c37427d51dcff7bb48c45c7c6382",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "path": "targets/client/tsconfig.json",
+      "size": 263,
+      "sha256": "f28b513cd0a576fb6e82fe33523c1ed6d17deee9c22b78c1d45c6cb445725e78",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "path": "targets/server/api.d.ts",
+      "size": 100977,
+      "sha256": "500663694274e86565e865bf862df4fe8fb35f8feee47a73852b72f60cc0de03",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "path": "targets/server/metadata.json",
+      "size": 174740,
+      "sha256": "551db8137082d96a089310295ae7b2bfa747c8ff8a4bf2211226e6cd66dcc1ac",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "path": "targets/server/tsconfig.json",
+      "size": 263,
+      "sha256": "f28b513cd0a576fb6e82fe33523c1ed6d17deee9c22b78c1d45c6cb445725e78",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "path": "targets/shared.d.ts",
+      "size": 24097,
+      "sha256": "0d75b193053884e544a796ee5185129355b596385a1ac55a321e7d677edda9c3",
+      "contentType": "application/octet-stream"
+    }
+  ]
+}

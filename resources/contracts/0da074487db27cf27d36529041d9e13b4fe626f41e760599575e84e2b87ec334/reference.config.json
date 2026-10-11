@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "server": {
+      "label": "Server API",
+      "entryPoint": "targets/server/api.d.ts",
+      "tsconfig": "targets/server/tsconfig.json",
+      "description": "Authoritative Node.js APIs for game modes, players, NPCs, beasts, props, world state, and persistent storage."
+    },
+    "client": {
+      "label": "Client API",
+      "entryPoint": "targets/client/api.d.ts",
+      "tsconfig": "targets/client/tsconfig.json",
+      "description": "Sandboxed V8 APIs for local presentation, the local player, doors and world policy, the character creator, and HUD prompts."
+    }
+  }
+}

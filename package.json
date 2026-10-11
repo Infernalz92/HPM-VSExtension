@@ -1,0 +1,308 @@
+{
+  "name": "hmp-hogwarts-api",
+  "displayName": "HMP Hogwarts API",
+  "description": "Hogwarts MP API IntelliSense, snippets, contract updates and API changelog for HMP resources.",
+  "version": "0.4.3",
+  "publisher": "nepixarts",
+  "license": "UNLICENSED",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "hogwarts",
+    "hogwarts-mp",
+    "mafiahub",
+    "hmp",
+    "nepixarts",
+    "api",
+    "typescript"
+  ],
+  "activationEvents": [
+    "onCommand:hmpHogwartsApi.createResource",
+    "onStartupFinished",
+    "onCommand:hmpHogwartsApi.healthCheck",
+    "onCommand:hmpHogwartsApi.checkExtensionUpdates",
+    "onCommand:hmpHogwartsApi.showExtensionChangelog"
+  ],
+  "main": "./dist/extension.js",
+  "files": [
+    "dist/**",
+    "resources/**",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "tsc -p tsconfig.json --noEmit",
+    "build": "node esbuild.mjs",
+    "package": "npm run check && npm run build && vsce package --no-dependencies"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "hmpHogwartsApi.createResource",
+        "title": "HMP: Create New Resource",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "hmpHogwartsApi.healthCheck",
+        "title": "HMP: Extension Health Check"
+      },
+      {
+        "command": "hmpHogwartsApi.checkUpdates",
+        "title": "HMP: Check Hogwarts API Updates"
+      },
+      {
+        "command": "hmpHogwartsApi.update",
+        "title": "HMP: Update Hogwarts API"
+      },
+      {
+        "command": "hmpHogwartsApi.showChangelog",
+        "title": "HMP: Show API Changelog"
+      },
+      {
+        "command": "hmpHogwartsApi.showVersion",
+        "title": "HMP: Show Current API Version"
+      },
+      {
+        "command": "hmpHogwartsApi.rollback",
+        "title": "HMP: Revert API Contract"
+      },
+      {
+        "command": "hmpHogwartsApi.openClientApi",
+        "title": "HMP: Open Client API"
+      },
+      {
+        "command": "hmpHogwartsApi.openServerApi",
+        "title": "HMP: Open Server API"
+      },
+      {
+        "command": "hmpHogwartsApi.openSharedApi",
+        "title": "HMP: Open Shared API"
+      },
+      {
+        "command": "hmpHogwartsApi.refreshExplorer",
+        "title": "HMP: Refresh API Explorer"
+      },
+      {
+        "command": "hmpHogwartsApi.syncWorkspaceTypings",
+        "title": "HMP: Clean Legacy API Typings"
+      },
+      {
+        "command": "hmpHogwartsApi.searchSymbols",
+        "title": "HMP: Search Hogwarts API Symbols",
+        "icon": "$(search)"
+      },
+      {
+        "command": "hmpHogwartsApi.showSymbolDetails",
+        "title": "HMP: Show API Symbol Details"
+      },
+      {
+        "command": "hmpHogwartsApi.filterAll",
+        "title": "HMP: API Explorer Filter: All"
+      },
+      {
+        "command": "hmpHogwartsApi.filterClient",
+        "title": "HMP: API Explorer Filter: Client"
+      },
+      {
+        "command": "hmpHogwartsApi.filterServer",
+        "title": "HMP: API Explorer Filter: Server"
+      },
+      {
+        "command": "hmpHogwartsApi.filterShared",
+        "title": "HMP: API Explorer Filter: Shared"
+      },
+      {
+        "command": "hmpHogwartsApi.checkExtensionUpdates",
+        "title": "HMP: Check Extension Updates"
+      },
+      {
+        "command": "hmpHogwartsApi.showExtensionChangelog",
+        "title": "HMP: Show Extension Changelog"
+      },
+      {
+        "command": "hmpHogwartsApi.showExtensionVersion",
+        "title": "HMP: Show Extension Version"
+      }
+    ],
+    "configuration": {
+      "title": "HMP Hogwarts API",
+      "properties": {
+        "hmpHogwartsApi.channel": {
+          "type": "string",
+          "enum": [
+            "testing"
+          ],
+          "default": "testing",
+          "description": "Hogwarts MP documentation-contract channel."
+        },
+        "hmpHogwartsApi.apiUrl": {
+          "type": "string",
+          "default": "https://api.mafiahub.dev",
+          "description": "Base URL used to retrieve Hogwarts MP documentation contracts."
+        },
+        "hmpHogwartsApi.autoUpdate": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically check for a newer API contract after VS Code starts."
+        },
+        "hmpHogwartsApi.checkIntervalHours": {
+          "type": "number",
+          "default": 12,
+          "minimum": 1,
+          "maximum": 168,
+          "description": "Minimum interval between automatic contract checks."
+        },
+        "hmpHogwartsApi.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable HMP diagnostics for common Hogwarts MP resource mistakes."
+        },
+        "hmpHogwartsApi.syncWorkspaceTypings": {
+          "type": "boolean",
+          "default": true,
+          "description": "Remove legacy HMP-injected client/server typings if present. The extension no longer creates node_modules inside resources."
+        },
+        "hmpHogwartsApi.clientFolderNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "client"
+          ],
+          "description": "Folder names treated as client scripting context."
+        },
+        "hmpHogwartsApi.serverFolderNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "server"
+          ],
+          "description": "Folder names treated as server scripting context."
+        },
+        "hmpHogwartsApi.sharedFolderNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "shared",
+            "types"
+          ],
+          "description": "Folder names treated as shared/type-only context. Only shared snippets are suggested there."
+        },
+        "hmpHogwartsApi.extensionAutoUpdate": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically check for a newer extension version."
+        },
+        "hmpHogwartsApi.extensionCheckIntervalHours": {
+          "type": "number",
+          "default": 12,
+          "minimum": 1,
+          "maximum": 168,
+          "description": "Minimum interval between automatic extension update checks."
+        },
+        "hmpHogwartsApi.githubRepository": {
+          "type": "string",
+          "default": "hogwarts-mp/foundations",
+          "description": "Public GitHub repository used for HMP Hogwarts API extension releases, in OWNER/REPOSITORY format."
+        },
+        "hmpHogwartsApi.githubApiBaseUrl": {
+          "type": "string",
+          "default": "https://api.github.com",
+          "description": "GitHub REST API base URL used for extension update checks."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "hmpHogwartsApi",
+          "title": "Hogwarts API",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "hmpHogwartsApi": [
+        {
+          "id": "hmpHogwartsApi.explorer",
+          "name": "API Explorer"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "hmpHogwartsApi.refreshExplorer",
+          "when": "view == hmpHogwartsApi.explorer",
+          "group": "navigation"
+        },
+        {
+          "command": "hmpHogwartsApi.searchSymbols",
+          "when": "view == hmpHogwartsApi.explorer",
+          "group": "navigation@1"
+        },
+        {
+          "command": "hmpHogwartsApi.filterAll",
+          "when": "view == hmpHogwartsApi.explorer",
+          "group": "navigation@2"
+        },
+        {
+          "command": "hmpHogwartsApi.filterClient",
+          "when": "view == hmpHogwartsApi.explorer",
+          "group": "navigation@3"
+        },
+        {
+          "command": "hmpHogwartsApi.filterServer",
+          "when": "view == hmpHogwartsApi.explorer",
+          "group": "navigation@4"
+        },
+        {
+          "command": "hmpHogwartsApi.filterShared",
+          "when": "view == hmpHogwartsApi.explorer",
+          "group": "navigation@5"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "hmpHogwartsApi.createResource",
+          "when": "explorerResourceIsFolder && resourceScheme == file",
+          "group": "navigation@1"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "hmpHogwartsApi.showSymbolDetails",
+          "when": "view == hmpHogwartsApi.explorer && viewItem == hmpHogwartsApi.symbol",
+          "group": "inline"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "hmpHogwartsApi.createResource"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/vscode": "^1.100.0",
+    "@vscode/vsce": "^3.6.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "typescript": "^5.8.3"
+  }
+}
